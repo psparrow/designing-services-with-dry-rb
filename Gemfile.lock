@@ -44,6 +44,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  dry-core
   dry-initializer
   dry-monads
   dry-validation

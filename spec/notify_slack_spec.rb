@@ -20,4 +20,18 @@ RSpec.describe NotifySlack do
       expect(result).to be_success
     end
   end
+
+  context 'when a permissible error is raised' do 
+    let(:notifier) { double(:notifier) }
+
+    before do 
+      allow(notifier).to receive(:ping).and_raise(Slack::SlackError)
+    end 
+
+    it 'wraps the error in a failure object' do 
+     result = described_class.call(message: 'Hello World!', notifier: notifier)
+      
+      expect(result).to be_failure
+    end
+  end
 end

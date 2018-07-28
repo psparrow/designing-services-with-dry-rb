@@ -9,11 +9,11 @@ class NotifySlack < Service
 
   option :message
   option :notifier, default: -> { Slack::Notifier.new(URL) }
+  permissible_errors [Slack::SlackError]
   
   def call    
-    ping_result = notifier.ping(message)      
-    Success.new(ping_result)
-  rescue StandardError
-    Failure.new('slack error')    
+    notifier.ping(message)      
+    
+    Success.new(true)
   end
 end
