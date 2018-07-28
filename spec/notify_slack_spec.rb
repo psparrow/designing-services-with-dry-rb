@@ -1,22 +1,23 @@
-module Slack
-  class Notifier 
-    def initialize(*args); end     
-    def ping(message); 'sent' end 
-  end 
-end
+require_relative './slack_notifier'
+require_relative '../lib/notify_slack'
+require 'pry'
 
 SLACK_WEBHOOK_URL = '12345'
 
-class NotifySlack
-  def self.call(message:)
-    notifier = Slack::Notifier.new(SLACK_WEBHOOK_URL)  
-    notifier.ping(message)
+RSpec.describe NotifySlack do   
+  context 'when provided an invalid message' do 
+    it 'returns false' do 
+      result = described_class.call(message: '')
+      
+      expect(result).to eq false 
+    end    
   end
-end
 
-RSpec.describe NotifySlack do 
-  it 'works' do 
-    result = described_class.call(message: 'Hello World!')
-    expect(result).to eq 'sent'    
+  context 'when provided valid arguments' do 
+    it 'works' do 
+      result = described_class.call(message: 'Hello World!')
+      
+      expect(result).to eq 'sent' 
+    end
   end
 end
