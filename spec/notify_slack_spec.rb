@@ -9,7 +9,7 @@ RSpec.describe NotifySlack do
     it 'returns false' do 
       result = described_class.call(message: '')
       
-      expect(result).to eq false 
+      expect(result).to be_failure
     end    
   end
 
@@ -17,7 +17,7 @@ RSpec.describe NotifySlack do
     it 'works' do 
       result = described_class.call(message: 'Hello World!')
       
-      expect(result).to eq 'sent' 
+      expect(result).to be_success
     end
   end
 end

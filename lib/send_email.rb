@@ -12,6 +12,12 @@ class SendEmail < Service
   option :emailer, default: -> { MyMailer }
   
   def call
-    emailer.send(to, body)
+    email_result = emailer.send(to, body)
+      
+    if email_result
+      Success.new(email_result)
+    else 
+      Failure.new('email error')
+    end
   end
 end

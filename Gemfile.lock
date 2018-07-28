@@ -17,6 +17,10 @@ GEM
       dry-container (~> 0.2, >= 0.2.6)
       dry-core (~> 0.2)
       dry-equalizer (~> 0.2)
+    dry-monads (1.0.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 0.4, >= 0.4.4)
+      dry-equalizer
     dry-types (0.13.2)
       concurrent-ruby (~> 1.0)
       dry-container (~> 0.3)
@@ -41,6 +45,7 @@ PLATFORMS
 
 DEPENDENCIES
   dry-initializer
+  dry-monads
   dry-validation
   pry
 

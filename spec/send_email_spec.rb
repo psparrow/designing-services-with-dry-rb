@@ -7,7 +7,7 @@ RSpec.describe SendEmail do
     it 'returns false' do 
       result = described_class.call(to: 'asdf@jkl.com', body: '')
       
-      expect(result).to eq false 
+      expect(result).to be_failure
     end    
   end
 
@@ -15,7 +15,7 @@ RSpec.describe SendEmail do
     it 'returns false' do 
       result = described_class.call(to: 'not-an-email-address', body: 'foo')
       
-      expect(result).to eq false 
+      expect(result).to be_failure
     end    
   end
 
@@ -23,7 +23,7 @@ RSpec.describe SendEmail do
     it 'works' do 
       result = described_class.call(to: 'test@test.com', body: 'foo')
       
-      expect(result).to eq 'sent' 
+      expect(result).to be_success 
     end
   end
 end
