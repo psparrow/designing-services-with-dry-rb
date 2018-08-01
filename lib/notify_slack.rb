@@ -1,6 +1,6 @@
 require_relative './service'
 
-URL = 'foo'.freeze
+URL = 'http://slack.com/webhooks/foo'.freeze
 
 class NotifySlack < Service
   Schema = Dry::Validation.Schema do
