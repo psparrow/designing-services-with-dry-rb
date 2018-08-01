@@ -1,5 +1,5 @@
 class MyMailer
-  def self.send(*args)
+  def self.send(*_args)
     'sent'
   end
 end
